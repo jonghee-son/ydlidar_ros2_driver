@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 
   //////////////////////int property/////////////////
   /// lidar baudrate
-  int optval = 230400;
+  int optval = 128000;
   node->declare_parameter("baudrate", optval);
   node->get_parameter("baudrate", optval);
   laser.setlidaropt(LidarPropSerialBaudrate, &optval, sizeof(int));
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
   node->get_parameter("device_type", optval);
   laser.setlidaropt(LidarPropDeviceType, &optval, sizeof(int));
   /// sample rate
-  optval = 9;
+  optval = 5;
   node->declare_parameter("sample_rate", optval);
   node->get_parameter("sample_rate", optval);
   laser.setlidaropt(LidarPropSampleRate, &optval, sizeof(int));
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
   node->get_parameter("fixed_resolution", b_optvalue);
   laser.setlidaropt(LidarPropFixedResolution, &b_optvalue, sizeof(bool));
   /// rotate 180
-  b_optvalue = true;
+  b_optvalue = false;
   node->declare_parameter("reversion", b_optvalue);
   node->get_parameter("reversion", b_optvalue);
   laser.setlidaropt(LidarPropReversion, &b_optvalue, sizeof(bool));
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
   node->get_parameter("intensity", b_optvalue);
   laser.setlidaropt(LidarPropIntenstiy, &b_optvalue, sizeof(bool));
   /// Motor DTR
-  b_optvalue = false;
+  b_optvalue = true;
   node->declare_parameter("support_motor_dtr", b_optvalue);
   node->get_parameter("support_motor_dtr", b_optvalue);
   laser.setlidaropt(LidarPropSupportMotorDtrCtrl, &b_optvalue, sizeof(bool));
@@ -131,11 +131,11 @@ int main(int argc, char *argv[]) {
   node->get_parameter("angle_min", f_optvalue);
   laser.setlidaropt(LidarPropMinAngle, &f_optvalue, sizeof(float));
   /// unit: m
-  f_optvalue = 64.f;
+  f_optvalue = 10.f;
   node->declare_parameter("range_max", f_optvalue);
   node->get_parameter("range_max", f_optvalue);
   laser.setlidaropt(LidarPropMaxRange, &f_optvalue, sizeof(float));
-  f_optvalue = 0.1f;
+  f_optvalue = 0.12f;
   node->declare_parameter("range_min", f_optvalue);
   node->get_parameter("range_min", f_optvalue);
   laser.setlidaropt(LidarPropMinRange, &f_optvalue, sizeof(float));
